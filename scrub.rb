@@ -19,6 +19,14 @@ json_data = JSON.parse(json_file)
 puts json_data
 
 # match json keys to sensitive fields && scrub fields' values
-
+scrubbed_data =
+  json_data.each do |k, v|
+    sensitive_fields.each do |field|
+      if field == k.to_s
+        v.to_s.gsub!(/\w/, '*')
+      end
+    end
+  end
+puts scrubbed_data
 
 # write scrubbed data to new json file
