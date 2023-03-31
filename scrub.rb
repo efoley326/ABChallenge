@@ -5,8 +5,13 @@ sensitive_fields = File.open('sensitive_fields.txt', 'r').flat_map {
   |field| field.split(' ') 
 }
 puts sensitive_fields
-# sort filenames to return only json files
 
+# sort filenames to return only json files
+ARGV.each_with_index.map { |filename, index| 
+  unless filename.include?('.json')
+    ARGV.delete_at(index)
+  end
+}
 
 # parse json
 
