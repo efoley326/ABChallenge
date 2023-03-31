@@ -9,7 +9,7 @@ To run the code on test files manually from your CL:
 ```
 ruby scrub.rb tests/<$directory>/input.json tests/<$directory>/sensitive_fields.txt
 ```
-To run all of the tests consecutively, I've provided a script file
+To run all of the tests consecutively, I've provided a script file. Run:
 ```
 bin/run_tests.sh
 ```
