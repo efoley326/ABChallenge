@@ -32,3 +32,6 @@ scrubbed_data =
 puts scrubbed_data
 
 # write scrubbed data to new json file
+new_file = File.new('scrubbed_data.json', 'w')
+new_file.syswrite(JSON.pretty_generate(scrubbed_data))
+new_file.close
