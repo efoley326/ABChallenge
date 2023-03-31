@@ -23,6 +23,8 @@ scrubbed_data =
   json_data.each do |k, v|
     sensitive_fields.each do |field|
       if field == k.to_s
+        v.sub!('true', '-')
+        v.sub!('false', '-')
         v.to_s.gsub!(/\w/, '*')
       end
     end
