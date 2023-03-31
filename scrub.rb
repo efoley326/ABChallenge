@@ -4,7 +4,6 @@ require 'json'
 sensitive_fields = File.open('sensitive_fields.txt', 'r').flat_map {
   |field| field.split(' ') 
 }
-puts sensitive_fields
 
 # sort filenames to return only json files
 ARGV.each_with_index.map { |filename, index| 
@@ -16,7 +15,6 @@ ARGV.each_with_index.map { |filename, index|
 # parse json
 json_file = ARGF.read
 json_data = JSON.parse(json_file)
-puts json_data
 
 # match json keys to sensitive fields && scrub fields' values
 scrubbed_data =
@@ -29,7 +27,6 @@ scrubbed_data =
       end
     end
   end
-puts scrubbed_data
 
 # write scrubbed data to new json file
 new_file = File.new('scrubbed_data.json', 'w')
