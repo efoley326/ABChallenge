@@ -28,7 +28,14 @@ scrubbed_data =
     end
   end
 
-# write scrubbed data to new json file
-new_file = File.new('scrubbed_data.json', 'w')
-new_file.syswrite(JSON.pretty_generate(scrubbed_data))
-new_file.close
+# write scrubbed data to new or existing json file
+pretty_data = JSON.pretty_generate(scrubbed_data)
+if File.exists?('scrubbed_data.json')
+  File.open('scrubbed_data.json', 'a') do |f|
+    f.puts pretty_data
+  end
+else
+  new_file = File.new('scrubbed_data.json', 'w')
+  new_file.syswrite(pretty_data)
+  new_file.close
+end
