@@ -14,7 +14,9 @@ ARGV.each_with_index.map { |filename, index|
 }
 
 # parse json
-
+json_file = ARGF.read
+json_data = JSON.parse(json_file)
+puts json_data
 
 # match json keys to sensitive fields && scrub fields' values
 
