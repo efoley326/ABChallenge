@@ -1,8 +1,10 @@
 require 'json'
 
 # return txt file as an array
-sensitive_fields = File.open('sensitive_fields.txt', 'r').flat_map {
-  |field| field.split(' ') 
+field_list = ARGV.find { |filename| 
+  filename.include?('.txt') }
+sensitive_fields = File.open(field_list, 'r').flat_map {
+  |field| field.split(' ')
 }
 
 # sort filenames to return only json files
